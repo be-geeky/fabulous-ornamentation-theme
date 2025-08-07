@@ -3,8 +3,12 @@ name: Theme Check
 on:
   push:
     branches: [main, dev]
+    paths-ignore:
+      - '.github/workflows/cla.yml'
   pull_request:
     branches: [main, dev]
+    paths-ignore:
+      - '.github/workflows/cla.yml'
 
 jobs:
   theme-check:
