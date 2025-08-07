@@ -1,4 +1,4 @@
-name: CI
+name: Theme Check
 
 on:
   push:
@@ -8,14 +8,20 @@ on:
 
 jobs:
   theme-check:
-    name: Shopify Theme Check
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Run Theme Check
-        uses: shopify/theme-check-action@v1
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
         with:
-          token: ${{ secrets.THEME_CHECK_TOKEN }}
+          ruby-version: 3.1  # can be 3.0 or 2.7 also
+
+      - name: Install theme-check
+        run: |
+          gem install theme-check
+
+      - name: Run theme-check
+        run: |
+          theme-check
