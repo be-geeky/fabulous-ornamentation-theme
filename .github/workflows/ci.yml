@@ -16,6 +16,6 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Run Theme Check
-        uses: shopify/theme-check-action@v2
+        uses: shopify/theme-check-action@v1
         with:
           token: ${{ secrets.THEME_CHECK_TOKEN }}
